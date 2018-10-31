@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Filter the IAM csv file and export the subset.
 The filter use regexp for each selector.
@@ -9,7 +10,6 @@ import pandas as pd
 import scipy.io as sio
 
 selectors = ['model', 'scenario', 'region', 'variable']
-output_formats = ['mat', 'csv', 'h5']
 
 
 def filter(df, **kwargs):
@@ -78,30 +78,49 @@ def export(df, output_file=None):
 
     else:
         df.to_string(sys.stdout, index=False)
+        sys.stdout.write('\n')
 
 
 def main():
     """
     main function
     """
-    parser = argparse.ArgumentParser(description="Filter csv file with IAM data.")
-    parser.add_argument("input", help="path to input IAM csv file file")
+    example_text = '''examples:
+
+     Print all unique models:
+     >>>python filter.py iam_input.csv -unique model
+     
+     Print all rows where models are GCAM or REMIND:
+     >>>python filter.py iam_input.csv -model 'GCAM|REMIND'
+     
+     Print unique regions of rows where model is GCAM:
+     >>>python filter.py iam_input.csv -model GCAM -unique region
+     
+     Export all rows where variable column start with Emissions|CO2 to my_output.csv file:
+     >>>python filter.py iam_input.csv -variable 'Emissions\|CO2*' -output my_output.csv
+     '''
+
+    parser = argparse.ArgumentParser(description="Filter and export csv file with IAM data. The filter use regexp"
+                                                 "for selectors values.",
+                                     epilog=example_text,
+                                     formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("input", help="path to input IAM csv file.")
     parser.add_argument("-unique", type=str,
-                        help="Show unique values of specified column. The result will be"
+                        help="Show unique values of specified column. The result will be "
                              "printed to standard console output.")
     parser.add_argument("-model", type=str,
-                        help="Model selection")
+                        help="Filter model column using regexp.")
     parser.add_argument("-scenario", type=str,
-                        help="Scenario selection")
+                        help="Filter scenario column using regexp.")
     parser.add_argument("-region", type=str,
-                        help="Region selection")
+                        help="Filter region column using regexp.")
     parser.add_argument("-variable", type=str,
-                        help="Variable selection")
+                        help="Filter variable column using regexp.")
     parser.add_argument("-output", type=str,
-                        help="Output file name. The filename should contain format"
-                             "in of output structure. If none provided the output"
-                             "will be csv file. If not supported file format is used,"
-                             "the script will raise error.")
+                        help="Output file name. The filename should contain file format."
+                             "Supported formats are csv, mat and h5. If not specified the result will be"
+                             "printed to console output."
+                             "If not supported file format is used the script will raise error.")
     args = parser.parse_args()
     args_dict = vars(args)
 
@@ -115,6 +134,7 @@ def main():
     if args_dict['unique']:
         out = list(res_df[args_dict['unique']].unique())
         sys.stdout.write(", ".join(str(x) for x in out))
+        sys.stdout.write('\n')
         sys.exit(0)
 
     export(res_df, args_dict['output'])
