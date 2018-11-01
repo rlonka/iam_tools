@@ -17,7 +17,7 @@ The utility can be used to show unique values of this columns.
 Selection can be exported to csv, mat and h5 output file.
 If teh output arg is omitted the result will be printed to console.
 
-#####Examples
+##### Examples
 
 Run help:
 ```python
