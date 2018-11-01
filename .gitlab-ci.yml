@@ -1,33 +1,28 @@
-# Official language image. Look for the different tagged releases at:
-# https://hub.docker.com/r/library/python/tags/
-image: python:3.6
+## Official language image. Look for the different tagged releases at:
+## https://hub.docker.com/r/library/python/tags/
+#image: python:3.6
+#
+#before_script:
+#  - python -V               # Print out python version for debugging
+#  - pip install virtualenv
+#  - virtualenv venv
+#  - source venv/bin/activate
+#
+#test:
+#  script:
+#  - pip install -r requirements.txt
+#  - pytest tests
 
-before_script:
+
+py3.5:
+  image: python:3.5
+  before_script:
   - python -V               # Print out python version for debugging
   - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
 
-tests:
-  stage: test
-  script:
-  - pip install -r requirements.txt
-  - pytest tests
-
-  stage: test
-  script:
-  - virtualenv venv3.7 --python=python3.7
-  - source venv3.7/bin/activate
-  - pip install -r requirements.txt
-  - pytest tests
-
-  stage: test
-  script:
-  - virtualenv venv3.5 --python=python3.5
-  - source venv3.5/bin/activate
-  - pip install -r requirements.txt
-  - pytest tests
-
-
-
-
+  test:
+    script:
+    - pip install -r requirements.txt
+    - pytest tests
