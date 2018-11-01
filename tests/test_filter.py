@@ -34,3 +34,15 @@ def test_scenario_filter():
     scenario_list = res.scenario.unique()
     for scenario in scenario_list:
         assert scenario.startswith("AMPERE2") == True
+
+    res = filter(df, **{'scenario': "450-.*.-OPT"})
+    scenario_list = res.scenario.unique()
+    for scenario in scenario_list:
+        assert "450-" in scenario
+        assert "-OPT" in scenario
+
+def test_variable_filter():
+    res = filter(df, **{'variable': "^Secondary Energy\|Electricity\|.*"})
+    res_list = res.variable.unique()
+    for item in res_list:
+        assert item.startswith("Secondary Energy|Electricity|") == True
