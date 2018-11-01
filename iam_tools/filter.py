@@ -89,18 +89,28 @@ def main():
     main function
     """
     example_text = '''examples:
-
+     Command line examples after installing to system:
+    
      Print all unique models:
-     >>>python filter.py iam_input.csv -unique model
+     >>>filter_IAM iam_input.csv -unique model
+     
+     Print to console all rows where variables starts with "Capacity|Electricity|":
+     >>>filter_AIM iam_input.csv -variable "^Capacity|Electricity|.*"
+
+     Export all rows where variable column start with Secondary Energy|Electricity| to my_output.mat [cell array] file:
+     >>>filter_AIM iam_input.csv -variable "^Secondary Energy|Electricity|.*" -output my_output.mat
+
+     Export all rows where variable column includes "450-" and "-OPT"  to my_output.csv file:
+     >>>filter_AIM iam_input.csv -SCENARIO "450-.*.-OPT" -output my_output.csv
      
      Print all rows where models are GCAM or REMIND:
-     >>>python filter.py iam_input.csv -model 'GCAM|REMIND'
+     >>>filter_IAM iam_input.csv -model "GCAM|REMIND"
      
      Print unique regions of rows where model is GCAM:
-     >>>python filter.py iam_input.csv -model GCAM -unique region
+     >>>filter_IAM iam_input.csv -model "GCAM" -unique region
      
      Export all rows where variable column start with Emissions|CO2 to my_output.csv file:
-     >>>python filter.py iam_input.csv -variable 'Emissions\|CO2*' -output my_output.csv
+     >>>filter_IAM iam_input.csv -variable "Emissions\|CO2.*" -output my_output.csv
      '''
 
     parser = argparse.ArgumentParser(description="Filter and export csv file with IAM data. The filter use regexp"

@@ -28,19 +28,34 @@ Print all unique models:
 ```python
 filter_IAM iam_input.csv -unique model
 ```
-     
-Print all rows where models are GCAM or REMIND to console output:
+
+Print to console all rows where variables starts with "Capacity|Electricity|":
 ```python
-filter_AIM iam_input.csv -model 'GCAM|REMIND'
+filter_AIM iam_input.csv -variable "^Capacity|Electricity|.*"
+```
+
+Export all rows where variable column start with Secondary Energy|Electricity| to my_output.mat [cell array] file:
+```python
+filter_AIM iam_input.csv -variable "^Secondary Energy|Electricity|.*" -output my_output.mat
+```
+
+Export all rows where variable column start includes 450- and -OPT  to my_output.csv file:
+```python
+filter_AIM iam_input.csv -variable "450-.*.-OPT" -output my_output.csv
+```
+     
+Print to console all rows where models are either GCAM or REMIND:
+```python
+filter_AIM iam_input.csv -model "GCAM|REMIND"
 ```
    
-Print unique regions of rows where model is GCAM:
+Print to console unique regions of rows where model is GCAM:
 ```python
-filter_AIM iam_input.csv -model GCAM -unique region
+filter_AIM iam_input.csv -model "GCAM" -unique region
 ```
      
 Export all rows where variable column start with Emissions|CO2 to my_output.csv file:
 ```python
-filter_AIM iam_input.csv -variable 'Emissions\|CO2*' -output my_output.csv
+filter_AIM iam_input.csv -variable "Emissions|CO2*" -output my_output.csv
 ```
 
