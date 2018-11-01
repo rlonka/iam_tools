@@ -67,7 +67,10 @@ def export(df, output_file=None):
         if output_file.endswith('.csv'):
             df.to_csv(output_file, index=False)
         elif output_file.endswith('.mat'):
-            df = df.add_prefix('col_')
+            # we prepend all column which starts with digit (all years columns)
+            # with 'y' as matlab cell array does not like columns names starting with
+            # digit.
+            df.columns = ['y{}'.format(col) if col[0].isdigit() else col for col in df.columns]
             d = df.to_dict(orient='list')
             sio.savemat(output_file, d)
         elif output_file.endswith('.h5'):
