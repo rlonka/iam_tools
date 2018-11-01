@@ -1,6 +1,7 @@
 ### IAM_tools
 
-The IAM_tools is command line utility to query data from [AMPERE Scenario database](http://www.iiasa.ac.at/web/home/research/researchPrograms/Energy/AMPERE_Scenario_database.html).
+The IAM_tools is command line utility to query data from
+[AMPERE Scenario database](http://www.iiasa.ac.at/web/home/research/researchPrograms/Energy/AMPERE_Scenario_database.html).
 Input data are comma separated value [csv] file.
 
 #### Installation
@@ -50,7 +51,8 @@ filter_IAM iam_input.csv -variable "^Capacity\|Electricity\|.*"
 Note, that the vertical bar '|' has a special meaning in regex (as the or symbol). Thus to match
 the literal character '|' you have to escape it with a backslash ('\').
 
-Export all rows where variable column start with Secondary Energy|Electricity| to my_output.mat [cell array] file:
+Export all rows where variable column start with Secondary Energy|Electricity| 
+to my_output.mat [cell array] file:
 ```python
 filter_IAM iam_input.csv -variable "^Secondary Energy\|Electricity\|.*" -output my_output.mat
 ```
@@ -72,5 +74,19 @@ filter_IAM iam_input.csv -variable "Emissions\|CO2*" -output my_output.csv
 
 #### Contributing
 
-If you find a bug or have suggestions for improvement please use the Issue Tracker for communication.
-Development follows a gitlab centric workflow, thus if you want to contribute fork the repository and file a merge request when you are finished.
+If you find a bug or have suggestions for improvement please use the
+[Issue Tracker](https://gitlab.com/dlab-indecol/iam_tools/issues) for communication.
+Development follows a gitlab centric workflow, thus if you want to contribute fork the repository
+ and file a merge request when you are finished.
+
+
+#### Authors
+
+* Radek Lonka
+* Konstantin Stadler
+
+#### License
+
+BSD 3-Clause License
+
+Copyright (c) 2018, [Industrial Ecology Digital Lab](https://iedl.no) at NTNU
