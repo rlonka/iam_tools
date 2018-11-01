@@ -54,8 +54,8 @@ def export(df, output_file=None):
     df: pandas DataFrame
         Input dataframe to be filtered.
     output_file: str
-        Output filename path with specified format which can be .csv, .mat or .h5.
-        If None the console std out will be used.
+        Output filename path with specified format which can be
+        .csv, .mat or .h5.  If None the console std out will be used.
 
     Raises
     ------
@@ -90,10 +90,10 @@ def main():
     """
     example_text = '''examples:
      Command line examples after installing to system:
-    
+
      Print all unique models:
      >>>filter_IAM iam_input.csv -unique model
-     
+
      Print to console all rows where variables starts with "Capacity|Electricity|":
      >>>filter_IAM iam_input.csv -variable "^Capacity\|Electricity\|.*"
 
@@ -102,13 +102,13 @@ def main():
 
      Export all rows where variable column includes "450-" and "-OPT"  to my_output.csv file:
      >>>filter_IAM iam_input.csv -scenario "450-.*.-OPT" -output my_output.csv
-     
+
      Print all rows where models are GCAM or REMIND:
      >>>filter_IAM iam_input.csv -model "GCAM|REMIND"
-     
+
      Print unique regions of rows where model is GCAM:
      >>>filter_IAM iam_input.csv -model "GCAM" -unique region
-     
+
      Export all rows where variable column start with Emissions|CO2 to my_output.csv file:
      >>>filter_IAM iam_input.csv -variable "Emissions\|CO2.*" -output my_output.csv
      '''

@@ -1,15 +1,14 @@
 import os
 import sys
-import pytest
 import pandas as pd
-from pandas.util.testing import assert_frame_equal
 
 TESTPATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(TESTPATH, '..'))
 
-from iam_tools.filter import filter
+from iam_tools.filter import filter  # NOQA
 
 df = pd.read_csv(os.path.join(TESTPATH, 'iam_test.csv'), delimiter=',')
+
 
 def test_model_filter():
     """Test retrieving unique model names"""
@@ -23,6 +22,7 @@ def test_model_filter():
     assert res.model.unique()[0] == "GCAM"
     assert res.model.unique()[1] == "REMIND"
 
+
 def test_scenario_filter():
     """Test retrieving unique model names"""
 
@@ -33,7 +33,7 @@ def test_scenario_filter():
     res = filter(df, **{'scenario': "^AMPERE2.*"})
     scenario_list = res.scenario.unique()
     for scenario in scenario_list:
-        assert scenario.startswith("AMPERE2") == True
+        assert scenario.startswith("AMPERE2")
 
     res = filter(df, **{'scenario': "450-.*.-OPT"})
     scenario_list = res.scenario.unique()
@@ -41,8 +41,9 @@ def test_scenario_filter():
         assert "450-" in scenario
         assert "-OPT" in scenario
 
+
 def test_variable_filter():
     res = filter(df, **{'variable': "^Secondary Energy\|Electricity\|.*"})
     res_list = res.variable.unique()
     for item in res_list:
-        assert item.startswith("Secondary Energy|Electricity|") == True
+        assert item.startswith("Secondary Energy|Electricity|")
