@@ -4,6 +4,9 @@ The IAM_tools is command line utility to query data from
 [AMPERE Scenario database](http://www.iiasa.ac.at/web/home/research/researchPrograms/Energy/AMPERE_Scenario_database.html).
 Input data are comma separated value [csv] file.
 
+For testing purpose there is small test file following IAM structure:
+tests/iam_test.csv
+
 #### Installation
 IAM_tools can be installed directly from gitlab repository:
 
