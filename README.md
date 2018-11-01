@@ -52,7 +52,7 @@ filter_IAM iam_input.csv -variable "^Capacity\|Electricity\|.*"
 ```
 
 Note, that the vertical bar '|' has a special meaning in regex (as the or symbol). Thus to match
-the literal character '|' you have to escape it with a backslash ('\').
+the literal character '|' you have to escape it with a backslash ('\\').
 
 Export all rows where variable column start with Secondary Energy|Electricity| 
 to my_output.mat [cell array] file:
