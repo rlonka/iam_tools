@@ -16,7 +16,6 @@ tests:
 
   stage: test
   script:
-  - source deactivate
   - virtualenv venv3.7 --python=python3.7
   - source venv3.7/bin/activate
   - pip install -r requirements.txt
@@ -24,7 +23,6 @@ tests:
 
   stage: test
   script:
-  - source deactivate
   - virtualenv venv3.5 --python=python3.5
   - source venv3.5/bin/activate
   - pip install -r requirements.txt
