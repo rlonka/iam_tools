@@ -60,7 +60,7 @@ to my_output.mat [cell array] file:
 filter_IAM iam_input.csv -variable "^Secondary Energy\|Electricity\|.*" -output my_output.mat
 ```
 
-Export all rows where variable column includes 450- and -OPT  to my_output.csv file:
+Export all rows where variable column contains 450- and -OPT  to my_output.csv file:
 ```python
 filter_IAM iam_input.csv -variable "450-.*.-OPT" -output my_output.csv
 ```
