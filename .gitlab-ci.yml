@@ -14,15 +14,26 @@
 #  - pytest tests
 
 
-py3.5:
-  image: python:3.5
-  before_script:
-  - python -V               # Print out python version for debugging
-  - pip install virtualenv
-  - virtualenv venv
-  - source venv/bin/activate
+image: python:3.5
+before_script:
+- python -V               # Print out python version for debugging
+- pip install virtualenv
+- virtualenv venv
+- source venv/bin/activate
 
-  test:
-    script:
-    - pip install -r requirements.txt
-    - pytest tests
+test:
+  script:
+  - pip install -r requirements.txt
+  - pytest tests
+
+image: python:3.6
+before_script:
+- python -V               # Print out python version for debugging
+- pip install virtualenv
+- virtualenv venv
+- source venv/bin/activate
+
+test:
+  script:
+  - pip install -r requirements.txt
+  - pytest tests
