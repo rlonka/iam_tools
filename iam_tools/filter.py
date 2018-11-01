@@ -95,13 +95,13 @@ def main():
      >>>filter_IAM iam_input.csv -unique model
      
      Print to console all rows where variables starts with "Capacity|Electricity|":
-     >>>filter_AIM iam_input.csv -variable "^Capacity|Electricity|.*"
+     >>>filter_IAM iam_input.csv -variable "^Capacity|Electricity|.*"
 
      Export all rows where variable column start with Secondary Energy|Electricity| to my_output.mat [cell array] file:
-     >>>filter_AIM iam_input.csv -variable "^Secondary Energy|Electricity|.*" -output my_output.mat
+     >>>filter_IAM iam_input.csv -variable "^Secondary Energy|Electricity|.*" -output my_output.mat
 
      Export all rows where variable column includes "450-" and "-OPT"  to my_output.csv file:
-     >>>filter_AIM iam_input.csv -SCENARIO "450-.*.-OPT" -output my_output.csv
+     >>>filter_IAM iam_input.csv -scenario "450-.*.-OPT" -output my_output.csv
      
      Print all rows where models are GCAM or REMIND:
      >>>filter_IAM iam_input.csv -model "GCAM|REMIND"
