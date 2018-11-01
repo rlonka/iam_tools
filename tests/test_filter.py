@@ -9,7 +9,7 @@ sys.path.append(os.path.join(TESTPATH, '..'))
 
 from iam_tools.filter import filter
 
-df = pd.read_csv('iam_test.csv', delimiter=',')
+df = pd.read_csv(os.path.join(TESTPATH, 'iam_test.csv'), delimiter=',')
 
 def test_model_filter():
     """Test retrieving unique model names"""
