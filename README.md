@@ -30,6 +30,11 @@ Run help:
 filter_IAM -h
 ```
 
+IAM_tools is designed to work with the AMPERE project model output. 
+To follow the examples described below, 
+you can use the small subsample (with modified numbers) used for testing.
+[You can downlowd this file here.](./tests/iam_input.csv)
+
 ###### Viewing unique entries for a specific index
 
 Print all unique models:
