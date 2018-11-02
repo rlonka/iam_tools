@@ -7,7 +7,7 @@ sys.path.append(os.path.join(TESTPATH, '..'))
 
 from iam_tools.filter import filter  # NOQA
 
-df = pd.read_csv(os.path.join(TESTPATH, 'iam_test.csv'), delimiter=',')
+df = pd.read_csv(os.path.join(TESTPATH, 'iam_input.csv'), delimiter=',')
 
 
 def test_model_filter():
