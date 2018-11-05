@@ -134,6 +134,9 @@ def main():
                              "Supported formats are csv, mat and h5. If not specified the result will be"
                              "printed to console output."
                              "If not supported file format is used the script will raise error.")
+    if len(sys.argv)==1:
+            parser.print_help(sys.stderr)
+            sys.exit(1)
     args = parser.parse_args()
     args_dict = vars(args)
 
