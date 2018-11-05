@@ -139,7 +139,11 @@ def main():
 
     params = {selector: args_dict[selector] for selector in selectors if args_dict[selector]}
 
-    df = pd.read_csv(args.input, delimiter=',')
+    try:
+        df = pd.read_csv(args.input, delimiter=',')
+    # the file might be in latin_1 encoding
+    except UnicodeDecodeError:
+        df = pd.read_csv(args.input, delimiter=',', encoding='latin_1')
 
     res_df = filter(df, **params)
 
