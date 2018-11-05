@@ -140,10 +140,10 @@ def main():
     params = {selector: args_dict[selector] for selector in selectors if args_dict[selector]}
 
     try:
-        df = pd.read_csv(args.input, delimiter=',')
+        df = pd.read_csv(args.input, delimiter=',', engine='python')
     # the file might be in latin_1 encoding
     except UnicodeDecodeError:
-        df = pd.read_csv(args.input, delimiter=',', encoding='latin_1')
+        df = pd.read_csv(args.input, delimiter=',', encoding='latin_1', engine='python')
 
     res_df = filter(df, **params)
 
