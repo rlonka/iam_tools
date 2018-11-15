@@ -1,4 +1,4 @@
-### IAM_tools
+#### IAM_tools
 
 The IAM_tools is command line utility to query data from
 [AMPERE Scenario database](http://www.iiasa.ac.at/web/home/research/researchPrograms/Energy/AMPERE_Scenario_database.html).
