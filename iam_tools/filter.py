@@ -38,6 +38,8 @@ def filter(df, **kwargs):
     df.columns = map(str.lower, df.columns)
 
     for param in kwargs.items():
+        # remove null
+        df = df[df[param[0]].notnull()]
         df = df[df[param[0]].str.contains(param[1], regex=True)]
         df = df.reset_index(drop=True)
     return df
